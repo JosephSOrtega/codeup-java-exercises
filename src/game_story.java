@@ -5,6 +5,7 @@ public class game_story {
     public static void main(String[] args) {
         intro();
     }
+
     private static int dice(int side) {
         double roll = Math.ceil(Math.random() * side);
         return (int) roll;
@@ -140,10 +141,10 @@ public class game_story {
         Scanner scanner = new Scanner(System.in);
 
 //            Bandit stats declared/////////////////////////////////////////
-        baddie.hp = 6;
-        baddie.mp = 3;
+        baddie.hp = 12;
+        baddie.mp = 6;
         baddie.chase = -1;
-        baddie.damageDie = 8;
+        baddie.damageDie = 6;
 //        End stats/////////////////////////////////////////
 
         System.out.println("After the town of friendly chased you out with torches and pitchforks, you continue on your way through the woods to get to the city of Whoknowsville.");
@@ -411,6 +412,7 @@ public class game_story {
             System.out.println("You defeated the baddie! Congrats!");
             sceneOneOutro();
         }
+        System.out.printf("Your current HP is %d.", character.hp);
 //battle
         System.out.println("You're in a fight for your life! What do you do? Run, Attack, or Talk?");
         String everyBodyWas = scanner.nextLine().toLowerCase();
@@ -448,11 +450,12 @@ public class game_story {
                 combatTurnTalk(twoDice(6) + character.sharp);
             } else if (howAttack.equalsIgnoreCase("pre")) {
                 combatTurnTalk(twoDice(6) + character.presence);
-            } else {
-                System.out.println("I didn't understand what you meant, please try again.");
-                fight();
             }
+        }  else {
+            System.out.println("I didn't understand what you meant, please try again.");
+            fight();
         }
+
 // mobs have Health points, Mental points, and Chase value
     }
 
@@ -498,6 +501,9 @@ public class game_story {
             } else if (howAttack.equalsIgnoreCase("pre")) {
                 combatTurnTalk(twoDice(6) + character.presence + 2);
             }
+        } else {
+            System.out.println("I didn't understand what you meant, please try again.");
+            Ambush();
         }
 // mobs have Health points, Mental points, and Chase value
     }
