@@ -49,7 +49,7 @@ public class game_story {
         private static int presence;
         private static int damageDie;
         private static String spell;
-        private static int scenes;
+        private static int scenes = 0;
 //        for later use
     }
 
@@ -188,8 +188,10 @@ public class game_story {
             choices.choice2 = scanner.nextLine();
             if (choices.choice2.equalsIgnoreCase("fight")) {
                 Ambush();
-            } else {
+            } else if (choices.choice2.equalsIgnoreCase("run")){
                 sceneOneOutro();
+            } else {
+                System.out.println("I didn't understand what you meant. Let's try again.");
             }
         }
     }
@@ -207,11 +209,13 @@ public class game_story {
             System.out.println("You rolled a success with little consequence!");
             System.out.println("You managed to spot them before they spotted you. You can sneak away or get the jump on them. [fight/run]");
             Scanner scanner = new Scanner(System.in);
-            choices.choice2 = scanner.nextLine();
+            choices.choice2 = (scanner.nextLine());
             if (choices.choice2.equalsIgnoreCase("fight")) {
                 Ambush();
-            } else {
+            } else if (choices.choice2.equalsIgnoreCase("run")){
                 sceneOneOutro();
+            } else {
+                System.out.println("I didn't understand what you meant. Let's try again.");
             }
         }
     }
@@ -221,13 +225,15 @@ public class game_story {
         int dam = dice(baddie.damageDie);
         System.out.println("Fuuuuuuck. That hurt. Their trap was tripped, hitting you for " + dam + " damage and they are coming right for you!");
         character.hp -= dam;
-        System.out.println("will you stand tall and fight? Or run like a coward?");
+        System.out.println("will you stand tall and fight? Or run like a coward? [fight/run]");
         Scanner scanner = new Scanner(System.in);
         choices.choice2 = scanner.nextLine().toLowerCase();
         if (choices.choice2.equalsIgnoreCase("fight")) {
             fight();
-        } else {
+        } else if (choices.choice2.equalsIgnoreCase("run")) {
             sceneOneOutro();
+        } else {
+            System.out.println("I didn't understand what you meant. Let's try again.");
         }
     }
 
@@ -241,7 +247,7 @@ public class game_story {
 
 
     private static void sceneOneOutro() {
-        System.out.println("As you walk into the sunset, the screen fades to black. Thanks for trying the demo!");
+        System.out.println("As you walk into the sunset, the screen fades to black. Thanks for trying the demo!\nYou rolled " + character.misses + " misses and got through " + character.scenes + " scenes.");
         System.exit(0);
     }
 
@@ -412,7 +418,7 @@ public class game_story {
             System.out.println("You defeated the baddie! Congrats!");
             sceneOneOutro();
         }
-        System.out.printf("Your current HP is %d.", character.hp);
+        System.out.printf("Your current HP is %d.\n", character.hp);
 //battle
         System.out.println("You're in a fight for your life! What do you do? Run, Attack, or Talk?");
         String everyBodyWas = scanner.nextLine().toLowerCase();
