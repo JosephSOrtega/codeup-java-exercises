@@ -311,6 +311,7 @@ public class game_story {
             System.out.println("You rolled a success with little consequence!");
             int dam = dice(character.damageDie);
             baddie.hp -= dam;
+            baddie.mp -= 1;
             System.out.println("You dealt " + dam + " damage!");
             fight();
         }
@@ -494,9 +495,9 @@ public class game_story {
                 System.out.println("How do you fight? With dexterity and fast moves? = AGI Or do you fight with power and prowess? = STR ");
                 String howAttack = scanner.nextLine().toLowerCase();
                 if (howAttack.equalsIgnoreCase("agi")) {
-                    combatTurnAttack(twoDice(6) + character.strength);
-                } else if (howAttack.equalsIgnoreCase("str")) {
                     combatTurnAttack(twoDice(6) + character.agility);
+                } else if (howAttack.equalsIgnoreCase("str")) {
+                    combatTurnAttack(twoDice(6) + character.strength);
                 } else {
                     System.out.println("I didn't understand what you meant, please try again.");
                     fight();
@@ -535,7 +536,9 @@ public class game_story {
     //////////////Ambushing gives you a +2 to your first roll
     private static void Ambush() {
         Scanner scanner = new Scanner(System.in);
-//battle
+        System.out.println(baddie.mp);
+        System.out.printf("\nYour current HP is %d.\n", character.hp);
+        //battle
         System.out.println("You're in a fight for your life! What do you do? Run, Attack, or Talk?");
         String everyBodyWas = scanner.nextLine().toLowerCase();
 //melee
@@ -556,9 +559,9 @@ public class game_story {
                 System.out.println("How do you fight? With dexterity and fast moves? = AGI Or do you fight with power and prowess? = STR ");
                 String howAttack = scanner.nextLine().toLowerCase();
                 if (howAttack.equalsIgnoreCase("agi")) {
-                    combatTurnAttack(twoDice(6) + character.strength + 2);
-                } else if (howAttack.equalsIgnoreCase("str")) {
                     combatTurnAttack(twoDice(6) + character.agility + 2);
+                } else if (howAttack.equalsIgnoreCase("str")) {
+                    combatTurnAttack(twoDice(6) + character.strength + 2);
                 } else {
                     System.out.println("I didn't understand what you meant, please try again.");
                     Ambush();
