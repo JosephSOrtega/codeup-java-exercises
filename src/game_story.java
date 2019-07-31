@@ -442,6 +442,7 @@ public class game_story {
                         youDied();
                     }
                     System.out.println("Injured, you still manage to chase them down and finish them off.\n");
+                    sceneOneOutro();
                 } else if (rolled >= 10) {
                     System.out.println("\nNice job, you rolled a complete success.\n");
                     int healz = dice(10);

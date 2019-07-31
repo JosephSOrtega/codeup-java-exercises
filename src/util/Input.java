@@ -3,12 +3,12 @@ package util;
 import java.util.Scanner;
 
 public class Input {
-//    private Scanner scanner = new Scanner(System.in);
-    private Scanner scanner;
+    private Scanner scanner = new Scanner(System.in);
+//    private Scanner scanner;
 
-    private Input() {
-        this.scanner = new Scanner(System.in);
-    }
+//    private Input() {
+//        this.scanner = new Scanner(System.in);
+//    }
 
     public String getString() {
         System.out.println("String Here");
