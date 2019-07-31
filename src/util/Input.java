@@ -3,7 +3,12 @@ package util;
 import java.util.Scanner;
 
 public class Input {
-    private Scanner scanner = new Scanner(System.in);
+//    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
+
+    private Input() {
+        this.scanner = new Scanner(System.in);
+    }
 
     public String getString() {
         System.out.println("String Here");
@@ -31,7 +36,7 @@ public class Input {
 
     }
 
-    public  int getInt() {
+    public int getInt() {
         System.out.println("enter a num btw 1-10:");
         int num = scanner.nextInt();
         if (num > 1 && num < 10) {
@@ -39,6 +44,7 @@ public class Input {
         } else {
             return getInt();
         }
+//        return this.scanner.nextInt();
     }
 
     public double getDouble(double min, double max) {

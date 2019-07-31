@@ -592,7 +592,6 @@ public class game_story {
             System.out.println("I didn't understand what you meant, please try again.");
             Ambush();
         }
-// mobs have Health points, Mental points, and Chase value
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
