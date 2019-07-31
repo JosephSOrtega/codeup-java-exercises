@@ -15,7 +15,7 @@ public class Input {
         return ("String Here");
     }
 
-    public  boolean yesNo() {
+    public boolean yesNo() {
         System.out.println("enter [y/n]");
         String a = scanner.nextLine();
         if (a.startsWith("y")) {
@@ -26,7 +26,7 @@ public class Input {
     }
 
     public int getInt(int min, int max) {
-        System.out.println("enter a num btw " +min+"-" +max);
+        System.out.println("enter a num btw " + min + "-" + max);
         int num = scanner.nextInt();
         if (num > min && num < max) {
             return num;
@@ -48,7 +48,7 @@ public class Input {
     }
 
     public double getDouble(double min, double max) {
-        System.out.println("enter a num btw " +min+"-" +max);
+        System.out.println("enter a num btw " + min + "-" + max);
         int num = scanner.nextInt();
         if (num > min && num < max) {
             return num;
@@ -66,5 +66,22 @@ public class Input {
         } else {
             return getDouble();
         }
+//        System.out.println("enter a num btw 1-10:");
+//        int num = scanner.nextInt();
+//        if (num > 1 && num < 10) {
+//            return num;
+//        } else {
+//            return getDouble(prompt);
+//        }
+////        return this.scanner.getDouble();
+//    }
+
     }
+//    public double getDouble() {
+//        return this.scanner.nextDouble();
+//    }
+//    public double getDouble(String prompt) {
+//
+//    }
+
 }
