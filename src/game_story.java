@@ -6,6 +6,8 @@ public class game_story {
         intro();
     }
 
+
+    //Dice Rollers
     private static int dice(int side) {
         double roll = Math.ceil(Math.random() * side);
         return (int) roll;
@@ -38,6 +40,7 @@ public class game_story {
         }
     }
 
+    //Classes
     private static class character {
         private static String name;
         private static int misses = 0;
