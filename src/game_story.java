@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 
 public class game_story {
@@ -15,7 +14,7 @@ public class game_story {
     private static int twoDice(int side) {
         int rollOne = (int) Math.ceil(Math.random() * side);
         int rollTwo = (int) Math.ceil(Math.random() * side);
-        System.out.println("\nYour first roll was "+rollOne+" & your second roll was "+rollTwo);
+        System.out.println("\nYour first roll was " + rollOne + " & your second roll was " + rollTwo);
         return rollOne + rollTwo;
     }
 
@@ -58,6 +57,7 @@ public class game_story {
     private static class baddie {
         private static int hp;
         private static int mp;
+        private static int maxMp;
         private static int chase;
         private static int damageDie;
     }
@@ -145,6 +145,7 @@ public class game_story {
 //            Bandit stats declared/////////////////////////////////////////
         baddie.hp = 12;
         baddie.mp = 6;
+        baddie.maxMp = 6;
         baddie.chase = -1;
         baddie.damageDie = 6;
 //        End stats/////////////////////////////////////////
@@ -180,7 +181,7 @@ public class game_story {
             System.out.println("You rolled a miss! Oh no! \nThe twig you stepped on makes a loud snap that is almost drowned out by the proceeding wet crack as your @$$hole snaps shut. \nThere is no way they didnt hear you. At least you didn't step on a trap or anything...");
             character.misses += 1;
             shitHitsFanSceneOne();
-        } else if (rolls.roll1 > 6 && rolls.roll1 < 10) {
+        } else if (rolls.roll1 >= 7 && rolls.roll1 <= 9) {
             System.out.println(("You rolled a mixed success!"));
             sceneOneBut();
         } else if (rolls.roll1 >= 10) {
@@ -194,6 +195,7 @@ public class game_story {
                 sceneOneOutro();
             } else {
                 System.out.println("I didn't understand what you meant. Let's try again.");
+                agiSceneOne();
             }
         }
     }
@@ -204,7 +206,7 @@ public class game_story {
             System.out.println("You rolled a miss! Oh no! \nYou see something moving in the woods and go investigate it because it couldn't possibly be a distraction or trap, right?");
             character.misses += 1;
             shitHitsFanSceneOne();
-        } else if (rolls.roll1 > 6 && rolls.roll1 < 10) {
+        } else if (rolls.roll1 >= 7 && rolls.roll1 <= 9) {
             System.out.println("You rolled a mixed success!");
             sceneOneBut();
         } else if (rolls.roll1 >= 10) {
@@ -218,6 +220,7 @@ public class game_story {
                 sceneOneOutro();
             } else {
                 System.out.println("I didn't understand what you meant. Let's try again.");
+                shpSceneOne();
             }
         }
     }
@@ -236,6 +239,7 @@ public class game_story {
             sceneOneOutro();
         } else {
             System.out.println("I didn't understand what you meant. Let's try again.");
+            sceneOneBut();
         }
     }
 
@@ -294,12 +298,13 @@ public class game_story {
             character.hp -= badDam;
             System.out.println("You take " + badDam + " damage from their blow!");
             fight();
-        } else if (a > 6 && a < 10) {
+        } else if (a >= 7 && a <= 9) {
             System.out.println("You rolled a mixed success!");
             int badDam = dice(baddie.damageDie);
             int dam = character.damageDie;
             character.hp -= badDam;
             baddie.hp -= dam;
+            baddie.mp -= 1;
             System.out.println("You dealt " + dam + " damage, but you opened yourself up to an attack! Take " + badDam + " damage from their blow!");
             fight();
         } else if (a >= 10) {
@@ -314,13 +319,14 @@ public class game_story {
 
     private static void spellDamage() {
         if (character.spell.equalsIgnoreCase("bolt")) {
-            double dam = twoDice(4) + character.sharp;
+            double dam = twoDice(4);
             baddie.hp -= dam;
             System.out.println("Your magical attack hit the foe for " + dam + " damage!");
         } else {
             double dam = twoDice(6) + character.sharp;
+            baddie.hp -= dam;
             System.out.println("Your magical attack hit the foe for " + dam + " damage!");
-            int damself = dice(4);
+            int damself = (int) (dam / (dice(4)));
             System.out.println("You hit your target, but that blast was brutal. You take " + damself + " damage from the blast.");
             character.hp -= damself;
         }
@@ -334,16 +340,18 @@ public class game_story {
             character.hp -= badDam;
             System.out.println("You take " + badDam + " damage from their blow!");
             fight();
-        } else if (a > 6 && a < 10) {
+        } else if (a >= 7 && a <= 9) {
             System.out.println("You rolled a mixed success!");
             int badDam = dice(baddie.damageDie);
             character.hp -= (badDam);
             System.out.println("You take " + badDam + " damage from their blow!");
             spellDamage();
+            baddie.mp -= 1;
             fight();
         } else if (a >= 10) {
             System.out.println("You rolled a success with little consequence!");
             spellDamage();
+            baddie.mp -= 1;
             fight();
         }
     }
@@ -359,7 +367,7 @@ public class game_story {
             character.hp -= (badDam);
             System.out.println("You take " + badDam + " damage from their blow! and couldn't escape!");
             fight();
-        } else if ((a - baddie.chase) > 6 && (a - baddie.chase) < 10) {
+        } else if ((a - baddie.chase) >= 7 && (a - baddie.chase) <= 9) {
             System.out.println("You rolled a mixed success!");
             int badDam = dice(baddie.damageDie);
             character.hp -= (badDam);
@@ -391,7 +399,7 @@ public class game_story {
             character.hp -= badDam;
             System.out.println("You take " + badDam + " damage from their blow!");
             fight();
-        } else if (a > 6 && a < 10) {
+        } else if (a >= 7 && a <= 9) {
             System.out.println("You rolled a mixed success!");
             int badDam = dice(baddie.damageDie);
             int dam = dice(character.damageDie) + character.sharp;
@@ -408,14 +416,58 @@ public class game_story {
         }
     }
 
+    private static void BaddieRunAway() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Your foe cowers from your onslaught and decides to make a break for it! Do you spare them and let them run or chase them down and finish the job? [spare/chase]");
+        String resp = scanner.nextLine();
+        switch (resp) {
+            case "spare":
+                System.out.println("\nYou let them run away with their lives and continue on your way.\n");
+                sceneOneOutro();
+            case "chase":
+                System.out.println("\nYou run to chase them down like the animal they are.\n");
+                int rolled = twoDice(6) + character.agility;
+                if (rolled <= 6) {
+                    System.out.println("\nOof, you rolled a miss.\n");
+                    int dam = dice(baddie.damageDie);
+                    character.hp -= dam;
+                    System.out.println("You try to chase them down, but you run into a trap during the pursuit! You take " + dam + " damage as they get away.\n");
+                } else if (rolled <= 10 && rolled >= 7) {
+                    System.out.println("\nNot bad, you rolled a mixed success.\n");
+                    int dam = dice(baddie.damageDie);
+                    character.hp -= dam;
+                    System.out.println("You try to chase them down, but you run into a trap during the pursuit! You take " + dam + " damage.\n");
+                    if (character.hp == 0) {
+                        youDied();
+                    }
+                    System.out.println("Injured, you still manage to chase them down and finish them off.\n");
+                } else if (rolled >= 10) {
+                    System.out.println("\nNice job, you rolled a complete success.\n");
+                    int healz = dice(10);
+                    character.hp += healz;
+                    System.out.println("You try to chase them down and finish them off! While searching the body, you find a healing potion! you heal " + healz + " HP!\nYour new current HP is " + character.hp);
+                    sceneOneOutro();
+                }
+            default:
+                System.out.println("\nI didn't understand, please try again.\n");
+                BaddieRunAway();
+
+        }
+    }
+
 
     //fighting
     private static void fight() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println(baddie.mp);
         //Dead
         if (character.hp <= 0) {
             System.out.println("\nShit, you died!");
             youDied();
+        } else if (baddie.mp <= (baddie.maxMp / 2)) {
+            if (dice(baddie.mp) == baddie.mp) {
+                BaddieRunAway();
+            }
         } else if (baddie.hp <= 0 || baddie.mp <= 0) {
             System.out.println("\nYou defeated the baddie! Congrats!");
             sceneOneOutro();
@@ -438,7 +490,7 @@ public class game_story {
                     System.out.println("I didn't understand what you meant, please try again.");
                     fight();
                 }
-            } else {
+            } else if (character.sharp < 2) {
                 System.out.println("How do you fight? With dexterity and fast moves? = AGI Or do you fight with power and prowess? = STR ");
                 String howAttack = scanner.nextLine().toLowerCase();
                 if (howAttack.equalsIgnoreCase("agi")) {
@@ -449,6 +501,9 @@ public class game_story {
                     System.out.println("I didn't understand what you meant, please try again.");
                     fight();
                 }
+            } else {
+                System.out.println("I didn't understand what you meant, please try again.");
+                fight();
             }
 
         }
@@ -469,6 +524,9 @@ public class game_story {
                 fight();
             }
 
+        } else {
+            System.out.println("I didn't understand what you meant, please try again.");
+            fight();
         }
 // mobs have Health points, Mental points, and Chase value
     }
@@ -494,7 +552,7 @@ public class game_story {
                     System.out.println("I didn't understand what you meant, please try again.");
                     Ambush();
                 }
-            } else {
+            } else if (character.sharp < 2) {
                 System.out.println("How do you fight? With dexterity and fast moves? = AGI Or do you fight with power and prowess? = STR ");
                 String howAttack = scanner.nextLine().toLowerCase();
                 if (howAttack.equalsIgnoreCase("agi")) {
@@ -505,6 +563,9 @@ public class game_story {
                     System.out.println("I didn't understand what you meant, please try again.");
                     Ambush();
                 }
+            } else {
+                System.out.println("I didn't understand what you meant, please try again.");
+                Ambush();
             }
 
         }
@@ -524,6 +585,9 @@ public class game_story {
                 System.out.println("I didn't understand what you meant, please try again.");
                 Ambush();
             }
+        } else {
+            System.out.println("I didn't understand what you meant, please try again.");
+            Ambush();
         }
 // mobs have Health points, Mental points, and Chase value
     }
