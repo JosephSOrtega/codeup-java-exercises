@@ -1,6 +1,6 @@
 package shapes;
 
-import shapes.Circle;
+//import shapes.Circle;
 
 public class CircleApp {
     public static void main(String[] args) {

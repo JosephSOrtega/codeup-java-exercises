@@ -11,10 +11,11 @@ public class game_story {
         return (int) roll;
     }
 
-    private static double twoDice(int side) {
-        double rollOne = Math.ceil(Math.random() * side);
-        double rollTwo = Math.ceil(Math.random() * side);
-        return (rollOne + rollTwo);
+    private static int twoDice(int side) {
+        int rollOne = (int) Math.ceil(Math.random() * side);
+        int rollTwo = (int) Math.ceil(Math.random() * side);
+        System.out.println("Your first roll was "+rollOne+" & your second roll was "+rollTwo);
+        return rollOne + rollTwo;
     }
 
 
@@ -61,7 +62,7 @@ public class game_story {
     }
 
     private static class rolls {
-        private static double roll1;
+        private static int roll1;
     }
 
     private static class choices {
@@ -74,7 +75,7 @@ public class game_story {
     private static void classPicker() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Oh shit, It's an adventurer! Quick, everyone hide! They always bring trouble. It looks like it is an....");
-        System.out.println("What kind of adventurer are you? A Washed Up Knight? [knight] An Incredibly Inept Wizard? [wizard] Or a Noisy Thief? [thief]");
+        System.out.println("What kind of adventurer are you? \n\nA Washed Up Knight? [knight] \nAn Incredibly Inept Wizard? [wizard] \nOr a Noisy Thief? [thief]");
 
         String yourChoice = scanner.nextLine();
 
@@ -89,12 +90,12 @@ public class game_story {
                 character.presence = 1;
                 character.damageDie = 10;
 
-                System.out.println("Your stats are: Strength = " + character.strength + ", Agility = " + character.agility + ", Sharp = " + character.sharp + ", and Presence = " + character.presence);
+                System.out.println("Your stats are: Strength = " + character.strength + ", Agility = " + character.agility + ", Sharp = " + character.sharp + ", and Presence = " + character.presence + "\n");
                 break;
 
             case "wizard":
                 character.yourClass = "Incredibly Inept Wizard";
-                System.out.println("Rad! You are a \" + character.yourClass + \" of the high order! Too bad you have never actually casted a spell before...");
+                System.out.println("Rad! You are a " + character.yourClass + " of the high order! Too bad you have never actually casted a spell before...");
                 character.hp = 16;
                 character.strength = -1;
                 character.agility = 0;
@@ -102,7 +103,7 @@ public class game_story {
                 character.presence = 1;
                 character.damageDie = 4;
 
-                System.out.println("Your stats are: Strength = " + character.strength + ", Agility = " + character.agility + ", Sharp = " + character.sharp + ", and Presence = " + character.presence);
+                System.out.println("Your stats are: Strength = " + character.strength + ", Agility = " + character.agility + ", Sharp = " + character.sharp + ", and Presence = " + character.presence + "\n");
                 break;
 
             case "thief":
@@ -115,7 +116,7 @@ public class game_story {
                 character.presence = -1;
                 character.damageDie = 8;
 
-                System.out.println("Your stats are: Strength = " + character.strength + ", Agility = " + character.agility + ", Sharp = " + character.sharp + ", and Presence = " + character.presence);
+                System.out.println("Your stats are: Strength = " + character.strength + ", Agility = " + character.agility + ", Sharp = " + character.sharp + ", and Presence = " + character.presence + "\n");
                 break;
 
             default:
@@ -128,7 +129,7 @@ public class game_story {
                 character.presence = 2;
                 character.damageDie = 6;
 
-                System.out.println("Your stats are: Strength = " + character.strength + ", Agility = " + character.agility + ", Sharp = " + character.sharp + ", and Presence = " + character.presence);
+                System.out.println("Your stats are: Strength = " + character.strength + ", Agility = " + character.agility + ", Sharp = " + character.sharp + ", and Presence = " + character.presence + "\n");
                 break;
         }
         sceneOne();
@@ -147,21 +148,21 @@ public class game_story {
         baddie.damageDie = 6;
 //        End stats/////////////////////////////////////////
 
-        System.out.println("After the town of friendly chased you out with torches and pitchforks, you continue on your way through the woods to get to the city of Whoknowsville.");
-        System.out.println("*snap!* What was that? Hello? What do you do? Will you try to sneak past whatever is there? Type: AGI. Will you try to spot the danger before it strikes? Type: SHP. Or will you bellow out a challenge and rush into combat? Type: #bravebutfoolish.");
+        System.out.println("After the town of friendly chased you out with torches and pitchforks, you continue on your way through the woods \nto get to the city of Whoknowsville.");
+        System.out.println("*snap!* What was that? Hello? What do you do? \n\nWill you try to sneak past whatever is there? Type: AGI. \nWill you try to spot the danger before it strikes? Type: SHP. \nOr will you bellow out a challenge and rush into combat? Type: #bravebutfoolish.");
 
         choices.choice1 = scanner.nextLine().toLowerCase();
         switch (choices.choice1) {
             case "agi":
                 System.out.println("As you try to be sneaky, we will roll to see what happens.");
                 rolls.roll1 = twoDice(6) + character.agility;
-                System.out.println("You rolled a " + rolls.roll1 + ". Lets see what they means for our adventurer...");
+                System.out.println("You rolled a total of " + rolls.roll1 + ". Lets see what they means for our adventurer...");
                 agiSceneOne();
                 break;
             case "shp":
                 System.out.println("As you try spot the danger before it has the jump on you, we will roll to see what happens.");
                 rolls.roll1 = twoDice(6) + character.sharp;
-                System.out.println("You rolled a " + rolls.roll1 + ". Lets see what they means for our adventurer...");
+                System.out.println("You rolled a total of " + rolls.roll1 + ". Lets see what they means for our adventurer...");
                 shpSceneOne();
                 break;
             default:
@@ -188,7 +189,7 @@ public class game_story {
             choices.choice2 = scanner.nextLine();
             if (choices.choice2.equalsIgnoreCase("fight")) {
                 Ambush();
-            } else if (choices.choice2.equalsIgnoreCase("run")){
+            } else if (choices.choice2.equalsIgnoreCase("run")) {
                 sceneOneOutro();
             } else {
                 System.out.println("I didn't understand what you meant. Let's try again.");
@@ -212,7 +213,7 @@ public class game_story {
             choices.choice2 = (scanner.nextLine());
             if (choices.choice2.equalsIgnoreCase("fight")) {
                 Ambush();
-            } else if (choices.choice2.equalsIgnoreCase("run")){
+            } else if (choices.choice2.equalsIgnoreCase("run")) {
                 sceneOneOutro();
             } else {
                 System.out.println("I didn't understand what you meant. Let's try again.");
@@ -223,7 +224,7 @@ public class game_story {
     //Scene 1 results
     private static void sceneOneBut() {
         int dam = dice(baddie.damageDie);
-        System.out.println("Fuuuuuuck. That hurt. Their trap was tripped, hitting you for " + dam + " damage and they are coming right for you!");
+        System.out.println("\nFuuuuuuck. That hurt. You managed to get ahead of them with enough time to make a hasty decision, \nbut their trap was tripped, hitting you for " + dam + " damage and they are coming right for you!");
         character.hp -= dam;
         System.out.println("will you stand tall and fight? Or run like a coward? [fight/run]");
         Scanner scanner = new Scanner(System.in);
@@ -239,7 +240,7 @@ public class game_story {
 
     private static void shitHitsFanSceneOne() {
         int dam = dice(baddie.damageDie);
-        System.out.println("Fuuuuuuck. That hurt. Their trap was tripped, hitting you for " + dam + " damage and they are coming right for you!");
+        System.out.println("\nFuuuuuuck. That hurt. Their trap was tripped, hitting you for " + dam + " damage and they are coming right for you!");
         character.hp -= dam;
         System.out.println("Oh no, here they come! You have no choice but to fight!");
         fight();
@@ -395,7 +396,7 @@ public class game_story {
             int dam = dice(character.damageDie) + character.sharp;
             character.hp -= badDam;
             baddie.mp -= dam;
-            System.out.println("Your words are getting to them! You dealt " + dam + " damage to their moral but you opened yourself up to an attack! Take " + badDam + " damage from their blow!");
+            System.out.println("Your words are getting to them! You dealt " + dam + " damage to their moral but you opened yourself up to an attack! \nTake " + badDam + " damage from their blow!");
             fight();
         } else if (a >= 10) {
             System.out.println("You rolled a success with little consequence!");
@@ -412,15 +413,15 @@ public class game_story {
         Scanner scanner = new Scanner(System.in);
         //Dead
         if (character.hp <= 0) {
-            System.out.println("Shit, you died!");
+            System.out.println("\nShit, you died!");
             youDied();
         } else if (baddie.hp <= 0 || baddie.mp <= 0) {
-            System.out.println("You defeated the baddie! Congrats!");
+            System.out.println("\nYou defeated the baddie! Congrats!");
             sceneOneOutro();
         }
-        System.out.printf("Your current HP is %d.\n", character.hp);
+        System.out.printf("\nYour current HP is %d.\n", character.hp);
 //battle
-        System.out.println("You're in a fight for your life! What do you do? Run, Attack, or Talk?");
+        System.out.println("You're in a fight for your life! What do you do? Run, Attack, or Talk?\n");
         String everyBodyWas = scanner.nextLine().toLowerCase();
 //melee
         if (everyBodyWas.equalsIgnoreCase("attack")) {
@@ -432,6 +433,9 @@ public class game_story {
                     character.spell = scanner.nextLine().toLowerCase();
                     System.out.println("Let's see if your spell casted successfully");
                     combatTurnSpell(twoDice(6) + character.sharp);
+                } else {
+                    System.out.println("I didn't understand what you meant, please try again.");
+                    fight();
                 }
             } else {
                 System.out.println("How do you fight? With dexterity and fast moves? = AGI Or do you fight with power and prowess? = STR ");
@@ -440,6 +444,9 @@ public class game_story {
                     combatTurnAttack(twoDice(6) + character.strength);
                 } else if (howAttack.equalsIgnoreCase("str")) {
                     combatTurnAttack(twoDice(6) + character.agility);
+                } else {
+                    System.out.println("I didn't understand what you meant, please try again.");
+                    fight();
                 }
             }
 
@@ -456,12 +463,12 @@ public class game_story {
                 combatTurnTalk(twoDice(6) + character.sharp);
             } else if (howAttack.equalsIgnoreCase("pre")) {
                 combatTurnTalk(twoDice(6) + character.presence);
+            } else {
+                System.out.println("I didn't understand what you meant, please try again.");
+                fight();
             }
-        }  else {
-            System.out.println("I didn't understand what you meant, please try again.");
-            fight();
-        }
 
+        }
 // mobs have Health points, Mental points, and Chase value
     }
 
@@ -482,6 +489,9 @@ public class game_story {
                     character.spell = scanner.nextLine().toLowerCase();
                     System.out.println("Let's see if your spell casted successfully");
                     combatTurnSpell(twoDice(6) + character.sharp + 2);
+                } else {
+                    System.out.println("I didn't understand what you meant, please try again.");
+                    Ambush();
                 }
             } else {
                 System.out.println("How do you fight? With dexterity and fast moves? = AGI Or do you fight with power and prowess? = STR ");
@@ -490,6 +500,9 @@ public class game_story {
                     combatTurnAttack(twoDice(6) + character.strength + 2);
                 } else if (howAttack.equalsIgnoreCase("str")) {
                     combatTurnAttack(twoDice(6) + character.agility + 2);
+                } else {
+                    System.out.println("I didn't understand what you meant, please try again.");
+                    Ambush();
                 }
             }
 
@@ -506,10 +519,10 @@ public class game_story {
                 combatTurnTalk(twoDice(6) + character.sharp + 2);
             } else if (howAttack.equalsIgnoreCase("pre")) {
                 combatTurnTalk(twoDice(6) + character.presence + 2);
+            } else {
+                System.out.println("I didn't understand what you meant, please try again.");
+                Ambush();
             }
-        } else {
-            System.out.println("I didn't understand what you meant, please try again.");
-            Ambush();
         }
 // mobs have Health points, Mental points, and Chase value
     }
