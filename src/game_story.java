@@ -176,7 +176,7 @@ public class game_story {
 //Scene 1 agi approach
     private static void agiSceneOne() {
         if (rolls.roll1 <= 6) {
-            System.out.println("You rolled a miss! Oh no! \nThe twig you stepped on makes a loud snap that is almost drowned out by the proceeding wet crack as your asshole shut. \nThere is no way they didnt hear you. At least you didn't step on a trap or anything...");
+            System.out.println("You rolled a miss! Oh no! \nThe twig you stepped on makes a loud snap that is almost drowned out by the proceeding wet crack as your butt hole snaps shut. \nThere is no way they didnt hear you. At least you didn't step on a trap or anything...");
             character.misses += 1;
             shitHitsFanSceneOne();
         } else if (rolls.roll1 > 6 && rolls.roll1 < 10) {
