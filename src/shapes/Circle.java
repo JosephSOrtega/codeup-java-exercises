@@ -1,7 +1,7 @@
 package shapes;
 
-public class Circle {
-    private static double radius;
+class Circle {
+    public static double radius;
 //    public static double radius;
 
     //    Circle circle = new Circle();
@@ -10,7 +10,7 @@ public class Circle {
         System.out.println(Circle.radius);
     }
 
-    double getArea() {
+    public double getArea() {
         System.out.println(Circle.radius * Circle.radius);
 
         return Math.PI * (Circle.radius * Circle.radius);

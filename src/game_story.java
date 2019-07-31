@@ -172,11 +172,11 @@ public class game_story {
         }
     }
 
-    ///////////////////////////////////////////////////////Left off here
+    ///////////////////////////////////////////////////////Scene 1 specific results
 //Scene 1 agi approach
     private static void agiSceneOne() {
         if (rolls.roll1 <= 6) {
-            System.out.println("You rolled a miss! Oh no!");
+            System.out.println("You rolled a miss! Oh no! \nThe twig you stepped on makes a loud snap that is almost drowned out by the proceeding wet crack as your asshole shut. \nThere is no way they didnt hear you. At least you didn't step on a trap or anything...");
             character.misses += 1;
             shitHitsFanSceneOne();
         } else if (rolls.roll1 > 6 && rolls.roll1 < 10) {
@@ -200,7 +200,7 @@ public class game_story {
     //Scene 1 shp approach
     private static void shpSceneOne() {
         if (rolls.roll1 <= 6) {
-            System.out.println("You rolled a miss! Oh no!");
+            System.out.println("You rolled a miss! Oh no! \nYou see something moving in the woods and go investigate it because it couldn't possibly be a distraction or trap, right?");
             character.misses += 1;
             shitHitsFanSceneOne();
         } else if (rolls.roll1 > 6 && rolls.roll1 < 10) {
@@ -224,9 +224,9 @@ public class game_story {
     //Scene 1 results
     private static void sceneOneBut() {
         int dam = dice(baddie.damageDie);
-        System.out.println("\nFuuuuuuck. That hurt. You managed to get ahead of them with enough time to make a hasty decision, \nbut their trap was tripped, hitting you for " + dam + " damage and they are coming right for you!");
+        System.out.println("\nFuuuuuuck. That hurt. You managed to get ahead of them with enough time to make a hasty decision, \nbut their trap was tripped, hitting you for " + dam + " damage. Oh, and to make things worse, they are coming right for you!");
         character.hp -= dam;
-        System.out.println("will you stand tall and fight? Or run like a coward? [fight/run]");
+        System.out.println("Will you stand tall and fight? Or run like a coward? [fight/run]");
         Scanner scanner = new Scanner(System.in);
         choices.choice2 = scanner.nextLine().toLowerCase();
         if (choices.choice2.equalsIgnoreCase("fight")) {
