@@ -1,20 +1,18 @@
 public class Person {
-    private static String name;
+    private String name;
 
 
     private Person(String here) {
         this.name = here;
     }
-
-
     // returns the person's name
 //    private static void getName() {
 //        System.out.println(name);
 //    }
-    private static String getName() {
-        return Person.name;
+    private String getName() {
+        System.out.println(this.name);
+        return this.name;
     }
-
     // changes the name property to the passed value
 //    private Person(String nameHere) {
 //        this.name = nameHere;
@@ -24,15 +22,16 @@ public class Person {
     }
 
     // prints a message to the console using the person's name
-    private static void sayHello() {
-        System.out.println("your name is " + name);
+    private void sayHello() {
+
+        System.out.println("Your name is " + this.name);
     }
 
     public static void main(String[] args) {
         Person Dave = new Person("dave");
         System.out.println("Their name is "+ Dave.name);
-        getName();
-        sayHello();
+        Dave.getName();
+        Dave.sayHello();
 
         Person person1 = new Person("John");
         Person person2 = new Person("John");
