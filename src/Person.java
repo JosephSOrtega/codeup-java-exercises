@@ -2,7 +2,7 @@ public class Person {
     private String name;
 
 
-    private Person(String here) {
+    public Person(String here) {
         this.name = here;
     }
     // returns the person's name

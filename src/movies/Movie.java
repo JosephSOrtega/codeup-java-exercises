@@ -1,21 +1,18 @@
 package movies;
 
-import movies.MoviesArray;
-
 public class Movie {
 
-        private String name;
-        private String category;
+        private static String name;
+        private static String category;
 
 
-
-    public String getter() {
-        return MoviesArray.Movies.name;
-        return MoviesArray.Movies.category;
-    }
-    public void setter(String that, String thiss) {
-        this.MoviesArray.name = that;
-        this.MoviesArray.category = thiss;
+//    public String getter() {
+//        return Movie.name;
+//        return Movie.category;
+//    }
+    public static void setter(String that, String thiss) {
+        Movie.name = that;
+        Movie.category = thiss;
 
     }
 //    public String getCat() {
