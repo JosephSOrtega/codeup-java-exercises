@@ -61,13 +61,14 @@ public class MoviesApplication {
             } else {
                 System.out.println("I didn't understand. Try again.");
             }
+
             System.out.println("\nWant to go back to the main menu? [y/n]\n");
             String answ = scanner.nextLine();
             if (answ.equalsIgnoreCase("y")) {
                 counter = 1;
             } else if (answ.equalsIgnoreCase("n")){
                 System.out.println("\nThanks for using Movies-R-Us!");
-                counter = -1;
+            break;
             } else {
                 System.out.println("I didn't understand. Try again.");
             }

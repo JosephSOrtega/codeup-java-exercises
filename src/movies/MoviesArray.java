@@ -1,7 +1,5 @@
 package movies;
 
-import movies.Movie;
-
 public class MoviesArray {
 
     public static Movie[] findAll() {

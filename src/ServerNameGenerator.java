@@ -6,7 +6,7 @@ public class ServerNameGenerator {
         String[] array1 = {"red", "blue", "tall", "short", "wide", "slim", "large", "small", "yellow", "green"};
         String[] array2 = {"cat", "dog", "fish", "bear", "Joseph", "people", "hat", "dork", "computer", "word"};
 
-        System.out.println("Here is your server name: \n" + gen(array1) + "-" + gen(array2));
+        System.out.printf("Here is your server name: \n%s-%s", gen(array1), gen(array2));
 
 
     }
