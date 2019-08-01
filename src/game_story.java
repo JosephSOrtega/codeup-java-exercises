@@ -41,42 +41,43 @@ public class game_story {
     }
 
     //Classes
-    private static class character {
-        private static String name;
-        private static int misses = 0;
+    public static class character {
+        public static String name;
+        public static int misses = 0;
 
-        private static String yourClass;
-        private static int hp;
-        private static int strength;
-        private static int agility;
-        private static int sharp;
-        private static int presence;
-        private static int damageDie;
-        private static String spell;
-        private static int scenes = 0;
+        public static String yourClass;
+        public static int hp;
+        public static int maxHP;
+        public static int strength;
+        public static int agility;
+        public static int sharp;
+        public static int presence;
+        public static int damageDie;
+        public static String spell;
+        public static int scenes = 0;
 //        for later use
     }
 
-    private static class baddie {
-        private static int hp;
-        private static int mp;
-        private static int maxMp;
-        private static int chase;
-        private static int damageDie;
+    public static class baddie {
+        public static int hp;
+        public static int mp;
+        public static int maxMp;
+        public static int chase;
+        public static int damageDie;
     }
 
-    private static class rolls {
-        private static int roll1;
+    public static class rolls {
+        public static int roll1;
     }
 
-    private static class choices {
-        private static String choice1;
-        private static String choice2;
+    public static class choices {
+        public static String choice1;
+        public static String choice2;
     }
 
 
     //    Class Selection //////////////////////////////////////////////
-    private static void classPicker() {
+    public static void classPicker() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Oh shit, It's an adventurer! Quick, everyone hide! They always bring trouble. It looks like it is an....");
         System.out.println("What kind of adventurer are you? \n\nA Washed Up Knight? [knight] \nAn Incredibly Inept Wizard? [wizard] \nOr a Noisy Thief? [thief]");
@@ -88,6 +89,7 @@ public class game_story {
                 character.yourClass = "Washed-up Knight";
                 System.out.println("Dope! You are a " + character.yourClass + ", sworn to defend the real from all manner of thing. Too bad married life caught up with you.");
                 character.hp = 24;
+                character.maxHP = 24;
                 character.strength = 2;
                 character.agility = -1;
                 character.sharp = 0;
@@ -101,6 +103,7 @@ public class game_story {
                 character.yourClass = "Incredibly Inept Wizard";
                 System.out.println("Rad! You are a " + character.yourClass + " of the high order! Too bad you have never actually casted a spell before...");
                 character.hp = 16;
+                character.maxHP = 16;
                 character.strength = -1;
                 character.agility = 0;
                 character.sharp = 2;
@@ -114,6 +117,7 @@ public class game_story {
                 character.yourClass = "Noisy Thief";
                 System.out.println("Sweet! Your steps as a " + character.yourClass + " might not be as quiet as a cat on the prowl, but you sure can use your claws!.");
                 character.hp = 20;
+                character.maxHP = 20;
                 character.strength = 1;
                 character.agility = 2;
                 character.sharp = 0;
@@ -127,6 +131,7 @@ public class game_story {
                 character.yourClass = "Mischievous";
                 System.out.println("Hey, that wasn't an answer listed. Lets make you a " + character.yourClass + " instead.");
                 character.hp = 18;
+                character.maxHP = 18;
                 character.strength = 0;
                 character.agility = 1;
                 character.sharp = -1;
