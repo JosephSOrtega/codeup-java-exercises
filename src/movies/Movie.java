@@ -2,19 +2,36 @@ package movies;
 
 public class Movie {
 
-        private static String name;
-        private static String category;
+        String name;
+        String category;
 
+    public Movie() {
+        name = "movie";
+    }
+    Movie(String name, String cat){
+        this.name = name;
+        this.category = cat;
+    }
 
-//    public String getter() {
-//        return Movie.name;
-//        return Movie.category;
-//    }
-    public static void setter(String that, String thiss) {
-        Movie.name = that;
-        Movie.category = thiss;
+    String getName() {
+        return this.name;
+    }
+
+     String getCat() {
+        return this.category;
+    }
+
+     void setter(String that, String thiss) {
+//         this.name = that;
+//         this.category = thiss;
+         name = that;
+         category = thiss;
 
     }
+
+//    void meth() {
+//        new Movie("dog", "cats");
+//    }
 //    public String getCat() {
 //        return MoviesArray.category;
 //    }

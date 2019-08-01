@@ -71,8 +71,8 @@ public class ArraysExercises {
         Person[] newGroup = addPerson(thisArray, new Person("linda"));
         Arrays.toString(newGroup);
 
-        for (Person char : newGroup)
-        System.out.println(char.name);
+        for (Person chara : newGroup)
+        System.out.println(chara.getName());
 //        person1.name = "Joe";
 //        person2.name = "John";
 //        person3.name = "Jim";
