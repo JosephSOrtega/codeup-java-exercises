@@ -48,8 +48,13 @@ public class Rager {
 
         switch (partyTime) {
             case 1:
-
-                break;
+//                Lost an item instead?
+                int dam = game_story.dice(6);
+                game_story.character.hp -= dam;
+                System.out.println("Oh shit. " +
+                        "\nYoure sore as hell and must have started a fight last night." +
+                        "\nYoure really feeling it today, you take "+dam+ "damage.");
+                game_shop.town();
 
             case 2:
 
