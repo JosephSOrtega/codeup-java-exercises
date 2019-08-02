@@ -20,16 +20,16 @@ public class game_shop {
                 sleep();
                 break;
             case "buy":
-
+                buy();
                 break;
             case "level":
-
+                level();
                 break;
             case "party":
-
+                party();
                 break;
             default:
-
+                shop();
         }
     }
 
@@ -44,7 +44,7 @@ public class game_shop {
 
     public static void buy() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("You waltz into a dusty shop, pockets jingling with coin. WHat do you buy?:" +
+        System.out.println("You waltz into a dusty shop, pockets jingling with coin. What do you buy?:" +
 
 // uncomment when gold is added to character
 //                "\nYou currently have " + game_story.character.gold + "Gold.\n" +
@@ -56,7 +56,7 @@ public class game_shop {
                 "Flash Powder: enemy stun for d3 rounds. (1 Gold) [powder]\n" +
                 "Drunken Adventurer’s Healing “potion”:  +10 HP, -1 forward to next roll. (1 Gold) [potion]\n" +
                 "Vampiric Stone: 10% of all damage dealt heals you. (2 Gold) [stone]\n" +
-                "Spell Scroll - Plague: deals 1d6 damage and enemies deal 1/2 damage for 1d3 rounds. (+2 SHP required). (2 Gold) [spell]\n" +
+                "Spell Scroll - Plague: deals 1d6 damage and enemies deal 1/2 damage for 1d3 rounds. (+2 SHP required). (2 Gold) [scroll]\n" +
                 "Cool Hat: +1 PRE for a Scene. (1 Gold) [hat]\n" +
                 "Cliff Bar: +1 energy (1 Gold) [bar]\n");
         String buying = scanner.nextLine().toLowerCase();
@@ -66,8 +66,8 @@ public class game_shop {
                     System.out.println("Hey! You dont have enough gold! Pick something else.");
                     shop();
                 } else {
-//                game_story.character.gold -= 1;
-//                game_story.character.molotov += 1;
+                    game_story.character.gold -= 1;
+                    game_story.character.molotov += 1;
                 }
                 break;
             case "blade":
@@ -75,45 +75,96 @@ public class game_shop {
                     System.out.println("Hey! You dont have enough gold! Pick something else.");
                     shop();
                 } else {
-//                game_story.character.gold -= 2;
-//                game_story.character.blade += 1;
+                    game_story.character.gold -= 2;
+                    game_story.character.blade += 1;
                 }
 
                 break;
             case "charm":
-//                game_story.character.gold -= 3;
-
+                if (3 > game_story.character.gold) {
+                    System.out.println("Hey! You dont have enough gold! Pick something else.");
+                    shop();
+                } else {
+                    game_story.character.gold -= 3;
+                    game_story.character.charm += 1;
+                }
                 break;
             case "shield":
-//                game_story.character.gold -= 2;
-
+                if (2 > game_story.character.gold) {
+                    System.out.println("Hey! You dont have enough gold! Pick something else.");
+                    shop();
+                } else {
+                    game_story.character.gold -= 2;
+                    game_story.character.shield += 1;
+                }
                 break;
             case "mail":
-//                game_story.character.gold -= 3;
-
+                if (3 > game_story.character.gold) {
+                    System.out.println("Hey! You dont have enough gold! Pick something else.");
+                    shop();
+                } else {
+                    game_story.character.gold -= 3;
+                    game_story.character.mail += 1;
+                }
                 break;
             case "powder":
-//                game_story.character.gold -= 1;
+                if (1 > game_story.character.gold) {
+                    System.out.println("Hey! You dont have enough gold! Pick something else.");
+                    shop();
+                } else {
+                    game_story.character.gold -= 1;
+                    game_story.character.powder += 1;
+                }
 
                 break;
             case "potion":
-//                game_story.character.gold -= 1;
+                if (1 > game_story.character.gold) {
+                    System.out.println("Hey! You dont have enough gold! Pick something else.");
+                    shop();
+                } else {
+                    game_story.character.gold -= 1;
+                    game_story.character.potion += 1;
+                }
 
                 break;
             case "stone":
-//                game_story.character.gold -= 2;
+                if (2 > game_story.character.gold) {
+                    System.out.println("Hey! You dont have enough gold! Pick something else.");
+                    shop();
+                } else {
+                    game_story.character.gold -= 2;
+                    game_story.character.stone += 1;
+                }
 
                 break;
-            case "spell":
-//                game_story.character.gold -= 2;
+            case "scroll":
+                if (2 > game_story.character.gold) {
+                    System.out.println("Hey! You dont have enough gold! Pick something else.");
+                    shop();
+                } else {
+                    game_story.character.gold -= 2;
+                    game_story.character.scroll += 1;
+                }
 
                 break;
             case "hat":
-//                game_story.character.gold -= 1;
+                if (1 > game_story.character.gold) {
+                    System.out.println("Hey! You dont have enough gold! Pick something else.");
+                    shop();
+                } else {
+                    game_story.character.gold -= 1;
+                    game_story.character.hat += 1;
+                }
 
                 break;
             case "bar":
-//                game_story.character.gold -= 1;
+                if (1 > game_story.character.gold) {
+                    System.out.println("Hey! You dont have enough gold! Pick something else.");
+                    shop();
+                } else {
+                    game_story.character.gold -= 1;
+                    game_story.character.bar += 1;
+                }
 
                 break;
             default:
