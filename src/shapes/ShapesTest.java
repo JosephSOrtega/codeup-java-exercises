@@ -1,13 +1,13 @@
 package shapes;
 
 public class ShapesTest {
-    Measurable myShape;
+   static Measurable myShape;
 
     public static void main(String[] args) {
-        Measurable myShape = new R(5,4);
+        myShape = new Rectangle(5, 4);
         System.out.println(myShape.getArea());
         System.out.println(myShape.getPerimeter());
-        myShape = new Square(5);
+        myShape = new Square(5, 5);
         System.out.println(myShape.getArea());
         System.out.println(myShape.getPerimeter());
 
