@@ -5,7 +5,7 @@ public class game_shop {
 
     private int sceneCounter = 0;
 
-    public static void shop() {
+    public static void town() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("You stumble into town after a long trek though the bandit filled forrest. " +
                 "\nTime to spend your hard earned coin!" +
@@ -29,7 +29,7 @@ public class game_shop {
                 party();
                 break;
             default:
-                shop();
+                town();
         }
     }
 
@@ -57,13 +57,14 @@ public class game_shop {
                 "Vampiric Stone: 10% of all damage dealt heals you. (2 Gold) [stone]\n" +
                 "Spell Scroll - Plague: deals 1d6 damage and enemies deal 1/2 damage for 1d3 rounds. (+2 SHP required). (2 Gold) [scroll]\n" +
                 "Cool Hat: +1 PRE for a Scene. (1 Gold) [hat]\n" +
-                "Cliff Bar: +1 energy (1 Gold) [bar]\n");
+                "Cliff Bar: +1 energy (1 Gold) [bar]\n" +
+                "\nType [town] to head back to the main menu.\n");
         String buying = scanner.nextLine().toLowerCase();
         switch (buying) {
             case "molotov":
                 if (1 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    buy();
                 } else {
                     Items.gold -= 1;
                     Items.molotov += 1;
@@ -72,7 +73,7 @@ public class game_shop {
             case "blade":
                 if (2 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    buy();
                 } else {
                     Items.gold -= 2;
                     Items.blade += 1;
@@ -82,7 +83,7 @@ public class game_shop {
             case "charm":
                 if (3 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    buy();
                 } else {
                     Items.gold -= 3;
                     Items.charm += 1;
@@ -91,7 +92,7 @@ public class game_shop {
             case "shield":
                 if (2 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    buy();
                 } else {
                     Items.gold -= 2;
                     Items.shield += 1;
@@ -100,7 +101,7 @@ public class game_shop {
             case "mail":
                 if (3 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    buy();
                 } else {
                     Items.gold -= 3;
                     Items.plate += 1;
@@ -109,7 +110,7 @@ public class game_shop {
             case "powder":
                 if (1 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    buy();
                 } else {
                     Items.gold -= 1;
                     Items.powder += 1;
@@ -119,7 +120,7 @@ public class game_shop {
             case "potion":
                 if (1 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    buy();
                 } else {
                     Items.gold -= 1;
                     Items.potion += 1;
@@ -129,7 +130,7 @@ public class game_shop {
             case "stone":
                 if (2 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    buy();
                 } else {
                     Items.gold -= 2;
                     Items.stone += 1;
@@ -139,7 +140,7 @@ public class game_shop {
             case "scroll":
                 if (2 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    buy();
                 } else {
                     Items.gold -= 2;
                     Items.scroll += 1;
@@ -149,7 +150,7 @@ public class game_shop {
             case "hat":
                 if (1 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    buy();
                 } else {
                     Items.gold -= 1;
                     Items.hat += 1;
@@ -159,12 +160,15 @@ public class game_shop {
             case "bar":
                 if (1 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    buy();
                 } else {
                     Items.gold -= 1;
                     Items.bar += 1;
                 }
 
+                break;
+            case "town":
+                town();
                 break;
             default:
                 System.out.println("Hey! Pick an actual option.");
@@ -184,7 +188,8 @@ public class game_shop {
                 "Increase your max Energy by 1 and gain 1 Energy. (2 XP) [energy]\n" +
                 "Learn a new class special move. (3 XP) [move]\n" +
                 "Gain a +1 to your next roll. (1 XP) [roll]\n" +
-                "\n* Note: Your stats cap at +2 maximum.\n");
+                "\n* Note: Your stats cap at +2 maximum.\n" +
+                "\nType [town] to head back to the main menu.\n");
         String spendXP = scanner.nextLine().toLowerCase();
         switch (spendXP) {
             case "str":
@@ -279,6 +284,9 @@ public class game_shop {
                     Items.bonusForward += 1;
                 }
                 break;
+            case "town":
+                town();
+                break;
             default:
                 System.out.println("Hey! Pick an actual option.");
                 buy();
@@ -299,13 +307,14 @@ public class game_shop {
                 "\nStreet-wide Mosh Pit (Costs 2 Gold, +1 to Party roll) [street]" +
                 "\nParty Rockin in the Big House (Costs 3 Gold, +3 to Party roll) [rock]" +
                 "\nA Rager of a Lifetime (Costs 4 Gold, +4 to Party roll) [rager]" +
-                "All-nighter (Costs  2 Gold, +1 to this Party roll & roll for a second Party) [night]");
+                "\nAll-nighter (Costs  2 Gold, +1 to this Party roll & roll for a second Party) [night]\n" +
+                "\nType [town] to head back to the main menu.\n");
         String wOoOo = scanner.nextLine().toLowerCase();
         switch (wOoOo) {
             case "blitz":
                 if (1 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    party();
                 } else {
                     Items.gold -= 1;
                     Items.molotov += 1;
@@ -314,7 +323,7 @@ public class game_shop {
             case "street":
                 if (2 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    party();
                 } else {
                     Items.gold -= 2;
                     Items.blade += 1;
@@ -324,34 +333,36 @@ public class game_shop {
             case "rock":
                 if (3 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    party();
                 } else {
                     Items.gold -= 3;
                     Items.charm += 1;
                 }
                 break;
             case "rager":
-                if (2 > Items.gold) {
+                if (4 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    party();
                 } else {
                     Items.gold -= 2;
                     Items.shield += 1;
                 }
                 break;
             case "night":
-                if (3 > Items.gold) {
+                if (2 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    shop();
+                    party();
                 } else {
                     Items.gold -= 3;
                     Items.plate += 1;
                 }
                 break;
-
+            case "town":
+                town();
+                break;
             default:
                 System.out.println("Hey! Pick an actual option.");
-                buy();
+                party();
         }
 
     }
