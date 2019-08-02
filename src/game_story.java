@@ -8,12 +8,12 @@ public class game_story {
 
 
     //Dice Rollers
-    private static int dice(int side) {
+    public static int dice(int side) {
         double roll = Math.ceil(Math.random() * side);
         return (int) roll;
     }
 
-    private static int twoDice(int side) {
+    public static int twoDice(int side) {
         int rollOne = (int) Math.ceil(Math.random() * side);
         int rollTwo = (int) Math.ceil(Math.random() * side);
         System.out.println("\nYour first roll was " + rollOne + " & your second roll was " + rollTwo);

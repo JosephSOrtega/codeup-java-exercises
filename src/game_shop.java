@@ -317,7 +317,8 @@ public class game_shop {
                     party();
                 } else {
                     Items.gold -= 1;
-                    Items.molotov += 1;
+                    Items.partyBonus += 1;
+                    Rager.rager();
                 }
                 break;
             case "street":
@@ -326,7 +327,8 @@ public class game_shop {
                     party();
                 } else {
                     Items.gold -= 2;
-                    Items.blade += 1;
+                    Items.partyBonus += 2;
+                    Rager.rager();
                 }
 
                 break;
@@ -336,7 +338,8 @@ public class game_shop {
                     party();
                 } else {
                     Items.gold -= 3;
-                    Items.charm += 1;
+                    Items.partyBonus += 3;
+                    Rager.rager();
                 }
                 break;
             case "rager":
@@ -344,8 +347,9 @@ public class game_shop {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
                     party();
                 } else {
-                    Items.gold -= 2;
-                    Items.shield += 1;
+                    Items.gold -= 4;
+                    Items.partyBonus += 4;
+                    Rager.rager();
                 }
                 break;
             case "night":
@@ -353,8 +357,10 @@ public class game_shop {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
                     party();
                 } else {
-                    Items.gold -= 3;
-                    Items.plate += 1;
+                    Items.gold -= 2;
+                    Items.partyBonus += 1;
+                    Items.allNighter = 1;
+                    Rager.rager();
                 }
                 break;
             case "town":

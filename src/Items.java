@@ -20,6 +20,8 @@ public class Items {
     static int moveLevel;
     static int bonusForward;
     static int negForward;
+    static int partyBonus;
+    static int allNighter;
 
 
 }
