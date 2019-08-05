@@ -42,7 +42,7 @@ public class Rager {
 
 
 //Party Results
-        int partyTime = game_story.dice(6) + partyBonus;
+        int partyTime = game_story.dice(6);
 
 
         switch (partyTime) {
@@ -54,68 +54,124 @@ public class Rager {
                         "\nYou're sore as hell and must have started a fight last night." +
                         "\nYou're really feeling it today, you take " + dam + "damage.");
                 game_shop.town();
-
+                break;
             case 2:
                 System.out.println("Upon awaking in the morning, you realize your backpack is heavier than it used to be." +
                         "\n When you open the bag to investigate, you find...");
                 int rando = game_story.dice(6);
+
+                int killIt2 = 1;
+                do {
+                    if (rando == 1 && Items.molotov >= 1 ||
+                            rando == 2 && Items.charm >= 1 ||
+                            rando == 3 && Items.shield >= 1) {
+                        rando += 1;
+                    } else if (rando == 4 && Items.hat >= 1){
+                        rando = 1;
+                    } else {
+                        killIt2 = 0;
+                    }
+                } while (killIt2 == 1);
+
                 switch (rando) {
                     case 1:
-                        int gold = game_story.twoDice(6)+game_story.character.presence;
+                        int gold = game_story.twoDice(6) + game_story.character.presence;
                         Items.gold += gold;
-                        System.out.println(gold+" gold!");
+                        System.out.println(gold + " gold!");
                         break;
                     case 2:
-                        Items.gold += game_story.character.presence+1;
+                        Items.gold += game_story.character.presence + 1;
                         Items.molotov += 1;
-                        System.out.println(game_story.character.presence+1 +" gold and a Molotov!");
+                        System.out.println(game_story.character.presence + 1 + " gold and a Molotov!");
 
                         break;
                     case 3:
-                        Items.gold += game_story.character.presence+1;
+                        Items.gold += game_story.character.presence + 1;
                         Items.charm += 1;
-                        System.out.println(game_story.character.presence+1 +" gold and a Lucky Charm!");
+                        System.out.println(game_story.character.presence + 1 + " gold and a Lucky Charm!");
 
                         break;
                     case 4:
-                        Items.gold += game_story.character.presence+1;
+                        Items.gold += game_story.character.presence + 1;
                         Items.potion += 1;
-                        System.out.println(game_story.character.presence+1 +" gold and a \"healing\" potion!");
+                        System.out.println(game_story.character.presence + 1 + " gold and a \"healing\" potion!");
 
                         break;
                     case 5:
-                        Items.gold += game_story.character.presence+1;
+                        Items.gold += game_story.character.presence + 1;
                         Items.shield += 1;
-                        System.out.println(game_story.character.presence+1 +" gold and a Shield!");
+                        System.out.println(game_story.character.presence + 1 + " gold and a Shield!");
 
                         break;
                     default:
-                        Items.gold += game_story.character.presence+1;
+                        Items.gold += game_story.character.presence + 1;
                         Items.hat += 1;
-                        System.out.println(game_story.character.presence+1 +" gold and a Cool Hat!");
+                        System.out.println(game_story.character.presence + 1 + " gold and a Cool Hat!");
                 }
                 game_shop.town();
                 break;
-
+////////////
             case 3:
+                System.out.println("You wake up in the town gym with sore muscles and vague memories of a workout montage." +
+                        "\n you gain...");
+                int gains = game_story.dice(6);
+                int killIt = 1;
 
+                do {
+                    if (gains == 1 && game_story.character.strength >= 2 ||
+                            gains == 2 && game_story.character.agility >= 2 ||
+                            gains == 3 && game_story.character.sharp >= 2 ||
+                            gains == 4 && game_story.character.presence >= 2) {
+                        gains += 1;
+                    } else {
+                        killIt = 0;
+                    }
+                } while (killIt == 1);
+
+
+                switch (gains) {
+                    case 1:
+                        game_story.character.presence += 1;
+                        System.out.println(" +1 to Strength!");
+                        break;
+                    case 2:
+                        game_story.character.presence += 1;
+                        System.out.println(" +1 to Agility!");
+
+                        break;
+                    case 3:
+                        game_story.character.presence += 1;
+                        System.out.println(" +1 to Sharp!");
+
+                        break;
+                    case 4:
+                        game_story.character.presence += 1;
+                        System.out.println(" +1 to Presence!");
+
+                        break;
+                    default:
+                        game_story.character.presence += 1;
+                        System.out.println(" +1 to Energy!");
+                }
+                game_shop.town();
                 break;
-
+////////////
             case 4:
 
                 break;
 
-
+////////////
             case 5:
 
                 break;
-
+////////////
             case 6:
 
                 break;
 
             default:
 
+////////////
         }
 
     }
