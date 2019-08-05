@@ -33,11 +33,11 @@ public class Rager {
         } else if (allNighter >= 1) {
             System.out.println("You lost count of how many meads you had. Better start counting again!");
             game_shop.partiesHad = 0;
+            allNighter = 0;
             game_shop.party();
         }
 
         game_shop.partiesHad = 1;
-        System.out.println(game_shop.partiesHad);
         game_shop.town();
 
     }
@@ -55,7 +55,6 @@ public class Rager {
                 System.out.println("Oh shit. " +
                         "\nYou're sore as hell and must have started a fight last night." +
                         "\nYou're really feeling it today, you take " + dam + " damage.");
-                game_shop.town();
                 break;
 ////////////
             case 2:

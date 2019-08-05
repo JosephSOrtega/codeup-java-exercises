@@ -129,6 +129,7 @@ public class game_story {
                 character.sharp = 0;
                 character.presence = 1;
                 character.damageDie = 10;
+                Items.gold = 2;
 
                 System.out.println(
 
@@ -154,6 +155,7 @@ public class game_story {
                 character.sharp = 2;
                 character.presence = 1;
                 character.damageDie = 4;
+                Items.gold = 3;
 
                 System.out.println(
 
@@ -179,6 +181,7 @@ public class game_story {
                 character.sharp = 0;
                 character.presence = -1;
                 character.damageDie = 8;
+                Items.gold = 1;
 
                 System.out.println("Your stats are:\n" +
                         "Strength = " + character.strength + "\n" +
@@ -191,7 +194,7 @@ public class game_story {
                 character.yourClass = "Mischievous";
                 System.out.println(
                         "Hey, that wasn't an answer listed!\n" +
-                                "It seems we have a little troublemaker on our hands." +
+                                "It seems we have a little troublemaker on our hands.\n" +
                                 "Why don't we make you a " + character.yourClass + " instead?\n");
 
                 character.hp = 18;
@@ -200,6 +203,7 @@ public class game_story {
                 character.sharp = -1;
                 character.presence = 2;
                 character.damageDie = 6;
+                Items.gold = 4;
 
                 System.out.println(
 
@@ -402,9 +406,9 @@ public class game_story {
 
 
     private static void sceneOneOutro() {
+        game_shop.town();
         System.out.println(
-
-                "As you walk into the sunset, \n" +
+                "\nAs you walk into the sunset, \n" +
                         "the screen fades to black... \n\n" +
 
                         "Thanks for trying our demo!");
@@ -435,7 +439,7 @@ public class game_story {
     }
 
 //////////////////////////////////////////////////////////
-// TODO: 2019-07-30 - Below is hoe we will traverse scenes maybe:
+// TODO: 2019-07-30 - Below is how we will traverse scenes maybe:
 
 //    public static void nextScene() {
 //        if (userClass.scenes === 0){
@@ -604,10 +608,11 @@ public class game_story {
         Scanner scanner = new Scanner(System.in);
         //Dead
         if (character.hp <= 0) {
-            System.out.println("Shit, you died!");
+            System.out.println("\n\nShit, you died!");
             youDied();
         } else if (baddie.hp <= 0 || baddie.mp <= 0) {
-            System.out.println("You defeated the baddie! Congrats!");
+            System.out.println("\nYou defeated the baddie! Congrats!\n" +
+                    "You got " + game_story.dice(baddie.damageDie) + " gold from them\n");
             sceneOneOutro();
         }
 //battle

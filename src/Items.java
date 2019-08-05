@@ -1,5 +1,5 @@
 public class Items {
-    static int gold = 20;
+    static int gold;
     static int molotov;
     static int blade;
     static int charm;
@@ -13,7 +13,6 @@ public class Items {
     static int bar;
 
 
-//move to character
-
+    //TODO: Add what Items do to code, refer to their descriptions in the shop.
 
 }

@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//TODO: add sout to each item bought.
 
 public class game_shop {
 
@@ -104,7 +104,9 @@ public class game_shop {
             case "mail":
                 if (3 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                } else {
+                } else if (game_story.character.strength < 2) {
+                    System.out.println("Hey! You're not strong enough to use that! Pick something else.");
+                } else{
                     Items.gold -= 3;
                     Items.plate += 1;
                 }
@@ -143,7 +145,9 @@ public class game_shop {
             case "scroll":
                 if (2 > Items.gold) {
                     System.out.println("Hey! You don't have enough gold! Pick something else.");
-                } else {
+                } else if (game_story.character.sharp < 2) {
+                    System.out.println("Hey! You're not smart enough to use that! Pick something else.");
+                } else{
                     Items.gold -= 2;
                     Items.scroll += 1;
                 }
@@ -270,7 +274,7 @@ public class game_shop {
                     System.out.println("Hey! You don't have enough XP! Pick something else.");
                     level();
                 } else if (3 >= game_story.character.moveLevel) {
-                    System.out.println("Hey! You don't have enough XP! Pick something else.");
+                    System.out.println("Hey! You already bought all of these! Pick something else.");
                     level();
                 } else {
                     game_story.character.xp -= 3;
@@ -280,7 +284,7 @@ public class game_shop {
 
             case "roll":
                 if (1 > game_story.character.xp) {
-                    System.out.println("Hey! Your stat is already capped out! Pick something else.");
+                    System.out.println("Hey! You don't have enough XP! Pick something else.");
                     level();
                 } else {
                     game_story.character.xp -= 1;
