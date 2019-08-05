@@ -177,7 +177,33 @@ public class Rager {
 ////////////
             default:
                 System.out.println("Who are you? You feel very different today. 2 of your stats are randomly switched!");
-                break;
+                int switchOne;
+                int switchTwo;
+                int switcher = game_story.dice(3);
+                switch (switcher) {
+                    case 1:
+                        switchOne = game_story.character.strength;
+                        switchTwo = game_story.character.agility;
+
+                        game_story.character.strength = switchTwo;
+                        game_story.character.agility = switchOne;
+                        break;
+                    case 2:
+                        switchOne = game_story.character.strength;
+                        switchTwo = game_story.character.presence;
+
+                        game_story.character.strength = switchTwo;
+                        game_story.character.presence = switchOne;
+                        break;
+                    default:
+                        switchOne = game_story.character.agility;
+                        switchTwo = game_story.character.presence;
+
+                        game_story.character.agility = switchTwo;
+                        game_story.character.presence = switchOne;
+                        break;
+                }
+
 ////////////
         }
 
