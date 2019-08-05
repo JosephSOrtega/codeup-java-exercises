@@ -29,8 +29,6 @@ public class Rager {
         }
 
 
-
-
         if (kickedOut >= 1) {
             kickedOut = 0;
             //Next scene
@@ -53,12 +51,50 @@ public class Rager {
                 int dam = game_story.dice(6);
                 game_story.character.hp -= dam;
                 System.out.println("Oh shit. " +
-                        "\nYoure sore as hell and must have started a fight last night." +
-                        "\nYoure really feeling it today, you take "+dam+ "damage.");
+                        "\nYou're sore as hell and must have started a fight last night." +
+                        "\nYou're really feeling it today, you take " + dam + "damage.");
                 game_shop.town();
 
             case 2:
+                System.out.println("Upon awaking in the morning, you realize your backpack is heavier than it used to be." +
+                        "\n When you open the bag to investigate, you find...");
+                int rando = game_story.dice(6);
+                switch (rando) {
+                    case 1:
+                        int gold = game_story.twoDice(6)+game_story.character.presence;
+                        Items.gold += gold;
+                        System.out.println(gold+" gold!");
+                        break;
+                    case 2:
+                        Items.gold += game_story.character.presence+1;
+                        Items.molotov += 1;
+                        System.out.println(game_story.character.presence+1 +" gold and a Molotov!");
 
+                        break;
+                    case 3:
+                        Items.gold += game_story.character.presence+1;
+                        Items.charm += 1;
+                        System.out.println(game_story.character.presence+1 +" gold and a Lucky Charm!");
+
+                        break;
+                    case 4:
+                        Items.gold += game_story.character.presence+1;
+                        Items.potion += 1;
+                        System.out.println(game_story.character.presence+1 +" gold and a \"healing\" potion!");
+
+                        break;
+                    case 5:
+                        Items.gold += game_story.character.presence+1;
+                        Items.shield += 1;
+                        System.out.println(game_story.character.presence+1 +" gold and a Shield!");
+
+                        break;
+                    default:
+                        Items.gold += game_story.character.presence+1;
+                        Items.hat += 1;
+                        System.out.println(game_story.character.presence+1 +" gold and a Cool Hat!");
+                }
+                game_shop.town();
                 break;
 
             case 3:

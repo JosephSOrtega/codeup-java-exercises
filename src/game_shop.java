@@ -53,7 +53,7 @@ public class game_shop {
                 "Lucky Charm: next time you die, you instead come back to life with 5 HP as the charm breaks. (3 Gold) [charm]\n" +
                 "Shield: +1 armor (2 Gold) [shield]\n" +
                 "Plate Mail: +2 armor, -1 AGI (+2 STR required) (3 Gold) [mail]\n" +
-                "Flash Powder: enemy stun for d3 rounds. (1 Gold) [powder]\n" +
+                "Flash Powder: enemy stun for d2 rounds. (1 Gold) [powder]\n" +
                 "Drunken Adventurer’s Healing “potion”:  +10 HP, -1 forward to next roll. (1 Gold) [potion]\n" +
                 "Vampiric Stone: 10% of all damage dealt heals you. (2 Gold) [stone]\n" +
                 "Spell Scroll - Plague: deals 1d6 damage and enemies deal 1/2 damage for 1d3 rounds. (+2 SHP required). (2 Gold) [scroll]\n" +
