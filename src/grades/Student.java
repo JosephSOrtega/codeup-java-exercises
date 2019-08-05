@@ -31,7 +31,7 @@ public class Student {
             total += nums;
         }
         total /= this.grades.size();
-        System.out.println(total);
+//        System.out.println(total);
         return total;
 
     }
@@ -48,7 +48,7 @@ public class Student {
         example.addGrade(5);
         example.addGrade(3);
         example.addGrade(5);
-        example.getGradeAverage();
+        System.out.println(example.getGradeAverage());
     }
 
 }
