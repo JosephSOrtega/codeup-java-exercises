@@ -1,5 +1,5 @@
 public class Items {
-    static int gold;
+    static int gold = 20;
     static int molotov;
     static int blade;
     static int charm;
@@ -14,12 +14,6 @@ public class Items {
 
 
 //move to character
-    static int xp;
-    static int energy;
-    static int maxEnergy;
-    static int moveLevel;
-    static int bonusForward;
-    static int negForward;
 
 
 }

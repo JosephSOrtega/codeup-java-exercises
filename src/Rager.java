@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Rager {
 
     static int partyBonus;
@@ -8,7 +6,7 @@ public class Rager {
 
     public static void rager() {
 
-        int result = game_story.twoDice(6) + game_story.character.presence + partyBonus;
+        int result = (int) game_story.twoDice(6) + game_story.character.presence + partyBonus;
 
         if (result <= 6) {
             System.out.println("You rolled a miss! Oh no! " +
@@ -20,12 +18,12 @@ public class Rager {
             System.out.println(("You rolled a mixed success!"));
             System.out.println("You're drinking way too much and are going to feel it later. " +
                     "\nYou take a -1 to your next roll, but the party was a huge success! Lets see what happened...");
-            Items.negForward += 1;
-
-
+            game_story.character.negForward += 1;
+            goodTimes();
         } else if (result >= 10) {
             System.out.println("You rolled a success with little consequence!");
             System.out.println("The party was a huge success! Lets see what happened...");
+            goodTimes();
         }
 
 
@@ -34,13 +32,17 @@ public class Rager {
             //Next scene
         } else if (allNighter >= 1) {
             System.out.println("You lost count of how many meads you had. Better start counting again!");
+            game_shop.partiesHad = 0;
             game_shop.party();
-        } else {
-            game_shop.partiesHad = 1;
-            game_shop.town();
         }
 
+        game_shop.partiesHad = 1;
+        System.out.println(game_shop.partiesHad);
+        game_shop.town();
 
+    }
+
+    public static void goodTimes() {
 //Party Results
         int partyTime = game_story.dice(6);
 
@@ -52,7 +54,7 @@ public class Rager {
                 game_story.character.hp -= dam;
                 System.out.println("Oh shit. " +
                         "\nYou're sore as hell and must have started a fight last night." +
-                        "\nYou're really feeling it today, you take " + dam + "damage.");
+                        "\nYou're really feeling it today, you take " + dam + " damage.");
                 game_shop.town();
                 break;
 ////////////
@@ -76,7 +78,7 @@ public class Rager {
 
                 switch (rando) {
                     case 1:
-                        int gold = game_story.twoDice(6) + game_story.character.presence;
+                        int gold = (int) game_story.twoDice(6) + game_story.character.presence;
                         Items.gold += gold;
                         System.out.println(gold + " gold!");
                         break;
@@ -109,7 +111,6 @@ public class Rager {
                         Items.hat += 1;
                         System.out.println(game_story.character.presence + 1 + " gold and a Cool Hat!");
                 }
-                game_shop.town();
                 break;
 ////////////
             case 3:
@@ -151,17 +152,15 @@ public class Rager {
 
                         break;
                     default:
-                        Items.energy += 1;
+                        game_story.character.energy += 1;
                         System.out.println(" +1 to Energy!");
                 }
-                game_shop.town();
                 break;
 ////////////
             case 4:
                 System.out.println("You wake up refreshed and in a bed that's not yours! " +
                         "\nTake a +2 forward for feeling so damn good today!");
-                Items.bonusForward += 2;
-                game_shop.town();
+                game_story.character.bonusForward += 2;
                 break;
 ////////////
             case 5:
@@ -172,7 +171,6 @@ public class Rager {
                     game_story.character.hp = game_story.character.maxHP;
                 }
                 System.out.println("You heal " + healed + "HP!");
-                game_shop.town();
                 break;
 ////////////
             default:
@@ -187,6 +185,7 @@ public class Rager {
 
                         game_story.character.strength = switchTwo;
                         game_story.character.agility = switchOne;
+                        System.out.println("Your STR and AGI switched!");
                         break;
                     case 2:
                         switchOne = game_story.character.strength;
@@ -194,6 +193,8 @@ public class Rager {
 
                         game_story.character.strength = switchTwo;
                         game_story.character.presence = switchOne;
+                        System.out.println("Your STR and PRE switched!");
+
                         break;
                     default:
                         switchOne = game_story.character.agility;
@@ -201,12 +202,13 @@ public class Rager {
 
                         game_story.character.agility = switchTwo;
                         game_story.character.presence = switchOne;
+                        System.out.println("Your AGI and PRE switched!");
                         break;
                 }
 
 ////////////
         }
-
     }
+
 
 }
