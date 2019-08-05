@@ -55,6 +55,7 @@ public class Rager {
                         "\nYou're really feeling it today, you take " + dam + "damage.");
                 game_shop.town();
                 break;
+////////////
             case 2:
                 System.out.println("Upon awaking in the morning, you realize your backpack is heavier than it used to be." +
                         "\n When you open the bag to investigate, you find...");
@@ -66,7 +67,7 @@ public class Rager {
                             rando == 2 && Items.charm >= 1 ||
                             rando == 3 && Items.shield >= 1) {
                         rando += 1;
-                    } else if (rando == 4 && Items.hat >= 1){
+                    } else if (rando == 4 && Items.hat >= 1) {
                         rando = 1;
                     } else {
                         killIt2 = 0;
@@ -131,16 +132,16 @@ public class Rager {
 
                 switch (gains) {
                     case 1:
-                        game_story.character.presence += 1;
+                        game_story.character.strength += 1;
                         System.out.println(" +1 to Strength!");
                         break;
                     case 2:
-                        game_story.character.presence += 1;
+                        game_story.character.agility += 1;
                         System.out.println(" +1 to Agility!");
 
                         break;
                     case 3:
-                        game_story.character.presence += 1;
+                        game_story.character.sharp += 1;
                         System.out.println(" +1 to Sharp!");
 
                         break;
@@ -150,27 +151,33 @@ public class Rager {
 
                         break;
                     default:
-                        game_story.character.presence += 1;
+                        Items.energy += 1;
                         System.out.println(" +1 to Energy!");
                 }
                 game_shop.town();
                 break;
 ////////////
             case 4:
-
+                System.out.println("You wake up refreshed and in a bed that's not yours! " +
+                        "\nTake a +2 forward for feeling so damn good today!");
+                Items.bonusForward += 2;
+                game_shop.town();
                 break;
-
 ////////////
             case 5:
-
+                System.out.println("You wake up after a good nights sleep at the crack of noon. You're well rested and ready to take on the day!");
+                int healed = game_story.character.maxHP / 2;
+                game_story.character.hp += healed;
+                if (game_story.character.hp > game_story.character.maxHP) {
+                    game_story.character.hp = game_story.character.maxHP;
+                }
+                System.out.println("You heal " + healed + "HP!");
+                game_shop.town();
                 break;
 ////////////
-            case 6:
-
-                break;
-
             default:
-
+                System.out.println("Who are you? You feel very different today. 2 of your stats are randomly switched!");
+                break;
 ////////////
         }
 
