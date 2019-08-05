@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class game_shop {
 
     private int sceneCounter = 0;
+    public static int partiesHad = 0;
 
     public static void town() {
         Scanner scanner = new Scanner(System.in);
@@ -295,81 +296,86 @@ public class game_shop {
     }
 
     public static void party() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("What better way is there to spend coin than to throw a wild party!" +
 
-                "\nYou currently have " + Items.gold + "Gold.\n" +
-                "\nWhenever you throw a wicked rager in town, it costs Gold. The more Gold you spend, the better the party!\n" +
-                "Whenever you throw a party, you roll +PRE +Gold spent past 1.\n " +
-                "Since the townies are all lightweights, you can only throw one party per visit to town...unless you throw an all-nighter, of course.\n" +
-                "What type of party will you throw?:\n" +
-                "\nBarroom Blitz (Costs 1 Gold, +0 to Party roll) [blitz]" +
-                "\nStreet-wide Mosh Pit (Costs 2 Gold, +1 to Party roll) [street]" +
-                "\nParty Rockin in the Big House (Costs 3 Gold, +2 to Party roll) [rock]" +
-                "\nA Rager of a Lifetime (Costs 4 Gold, +3 to Party roll) [rager]" +
-                "\nAll-nighter (Costs  2 Gold, +0 to this Party roll & roll for a second Party) [night]\n" +
-                "\nType [town] to head back to the main menu.\n");
-        String wOoOo = scanner.nextLine().toLowerCase();
-        switch (wOoOo) {
-            case "blitz":
-                if (1 > Items.gold) {
-                    System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    party();
-                } else {
-                    Items.gold -= 1;
-                    Rager.partyBonus = 0;
-                    Rager.rager();
-                }
-                break;
-            case "street":
-                if (2 > Items.gold) {
-                    System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    party();
-                } else {
-                    Items.gold -= 2;
-                    Rager.partyBonus += 1;
-                    Rager.rager();
-                }
+        if (partiesHad > 0) {
+            System.out.println("Hey! You already threw a party! Pick something else to do.");
+            town();
+        } else {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("What better way is there to spend coin than to throw a wild party!" +
 
-                break;
-            case "rock":
-                if (3 > Items.gold) {
-                    System.out.println("Hey! You don't have enough gold! Pick something else.");
+                    "\nYou currently have " + Items.gold + "Gold.\n" +
+                    "\nWhenever you throw a wicked rager in town, it costs Gold. The more Gold you spend, the better the party!\n" +
+                    "Whenever you throw a party, you roll +PRE +Gold spent past 1.\n " +
+                    "Since the townies are all lightweights, you can only throw one party per visit to town...unless you throw an all-nighter, of course.\n" +
+                    "What type of party will you throw?:\n" +
+                    "\nBarroom Blitz (Costs 1 Gold, +0 to Party roll) [blitz]" +
+                    "\nStreet-wide Mosh Pit (Costs 2 Gold, +1 to Party roll) [street]" +
+                    "\nParty Rockin in the Big House (Costs 3 Gold, +2 to Party roll) [rock]" +
+                    "\nA Rager of a Lifetime (Costs 4 Gold, +3 to Party roll) [rager]" +
+                    "\nAll-nighter (Costs  2 Gold, +0 to this Party roll & roll for a second Party) [night]\n" +
+                    "\nType [town] to head back to the main menu.\n");
+            String wOoOo = scanner.nextLine().toLowerCase();
+            switch (wOoOo) {
+                case "blitz":
+                    if (1 > Items.gold) {
+                        System.out.println("Hey! You don't have enough gold! Pick something else.");
+                        party();
+                    } else {
+                        Items.gold -= 1;
+                        Rager.partyBonus = 0;
+                        Rager.rager();
+                    }
+                    break;
+                case "street":
+                    if (2 > Items.gold) {
+                        System.out.println("Hey! You don't have enough gold! Pick something else.");
+                        party();
+                    } else {
+                        Items.gold -= 2;
+                        Rager.partyBonus += 1;
+                        Rager.rager();
+                    }
+
+                    break;
+                case "rock":
+                    if (3 > Items.gold) {
+                        System.out.println("Hey! You don't have enough gold! Pick something else.");
+                        party();
+                    } else {
+                        Items.gold -= 3;
+                        Rager.partyBonus += 2;
+                        Rager.rager();
+                    }
+                    break;
+                case "rager":
+                    if (4 > Items.gold) {
+                        System.out.println("Hey! You don't have enough gold! Pick something else.");
+                        party();
+                    } else {
+                        Items.gold -= 4;
+                        Rager.partyBonus += 3;
+                        Rager.rager();
+                    }
+                    break;
+                case "night":
+                    if (2 > Items.gold) {
+                        System.out.println("Hey! You don't have enough gold! Pick something else.");
+                        party();
+                    } else {
+                        Items.gold -= 2;
+                        Rager.partyBonus = 0;
+                        Rager.allNighter = 1;
+                        Rager.rager();
+                    }
+                    break;
+                case "town":
+                    town();
+                    break;
+                default:
+                    System.out.println("Hey! Pick an actual option.");
                     party();
-                } else {
-                    Items.gold -= 3;
-                    Rager.partyBonus += 2;
-                    Rager.rager();
-                }
-                break;
-            case "rager":
-                if (4 > Items.gold) {
-                    System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    party();
-                } else {
-                    Items.gold -= 4;
-                    Rager.partyBonus += 3;
-                    Rager.rager();
-                }
-                break;
-            case "night":
-                if (2 > Items.gold) {
-                    System.out.println("Hey! You don't have enough gold! Pick something else.");
-                    party();
-                } else {
-                    Items.gold -= 2;
-                    Rager.partyBonus = 0;
-                    Rager.allNighter = 1;
-                    Rager.rager();
-                }
-                break;
-            case "town":
-                town();
-                break;
-            default:
-                System.out.println("Hey! Pick an actual option.");
-                party();
+            }
         }
-
     }
 }

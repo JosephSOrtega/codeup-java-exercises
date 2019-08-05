@@ -7,6 +7,7 @@ public class Rager {
     static int kickedOut = 0;
 
     public static void rager() {
+
         int result = game_story.twoDice(6) + game_story.character.presence + partyBonus;
 
         if (result <= 6) {
@@ -33,11 +34,11 @@ public class Rager {
         if (kickedOut >= 1) {
             kickedOut = 0;
             //Next scene
-
         } else if (allNighter >= 1) {
             System.out.println("You lost count of how many meads you had. Better start counting again!");
             game_shop.party();
         } else {
+            game_shop.partiesHad = 1;
             game_shop.town();
         }
 
