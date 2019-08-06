@@ -47,7 +47,7 @@ public class game_story {
         } else {
             System.out.println(
 
-                    "I didnt understand. Please submit your answer again.");
+                    "I didn't understand. Please submit your answer again.");
 
             intro();
         }

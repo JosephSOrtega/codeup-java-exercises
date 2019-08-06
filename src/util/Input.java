@@ -6,13 +6,14 @@ public class Input {
 
     private Scanner scanner;
 
-    public Input(){
+    public Input() {
         this.scanner = new Scanner(System.in);
     }
 
     public String getString() {
         return this.scanner.nextLine();
     }
+
     public String getString(String prompt) {
         System.out.println(prompt);
         return this.getString();
@@ -25,6 +26,7 @@ public class Input {
             return true;
         } else return false;
     }
+
     public boolean yesNo(String prompt) {
         System.out.println(prompt);
         return this.yesNo();
@@ -43,8 +45,17 @@ public class Input {
     public int getInt() {
         return this.scanner.nextInt();
     }
-    public int getInt(String prompt) {
-        System.out.println(prompt);
+
+    //    public int getInt(String prompt) {
+//        System.out.println(prompt);
+//        return this.getInt();
+//    }
+    public int getInt(String prompt) throws Exception {
+        try {
+            System.out.println(prompt);
+        } catch (Exception e) {
+            System.out.println("Uh oh, something went wrong: ");
+        }
         return this.getInt();
     }
 
@@ -58,24 +69,30 @@ public class Input {
         } while (true);
 
     }
+
     public double getDouble() {
         return this.scanner.nextDouble();
     }
-    public double getDouble(String prompt) {
-        System.out.println(prompt);
+
+    public double getDouble(String prompt) throws Exception {
+        try {
+            System.out.println(prompt);
+        } catch (Exception e) {
+            System.out.println("Uh oh, something went wrong: ");
+        }
         return this.getDouble();
     }
 
-    public static void main(String[] args) {
-        Input input = new Input();
-        System.out.println("Enter your answer (y|n)?");
-        System.out.println(input.yesNo());
-        System.out.println(input.getInt(1,10));
-    }
+//    public static void main(String[] args) {
+//        Input input = new Input();
+//        System.out.println("Enter your answer (y|n)?");
+//        System.out.println(input.yesNo());
+//        System.out.println(input.getInt(1, 10));
+////        System.out.println(input.getInt(Integer.valueOf(String s)));
+////        System.out.println(input.getDouble(Double.valueOf(String s)));
+//
+//    }
 }
-
-
-
 
 
 //Old Shit V
