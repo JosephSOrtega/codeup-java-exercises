@@ -74,17 +74,19 @@ public class Input {
 
     }
 
-    public double getDouble()throws Exception {
+    public double getDouble() {
+        double num = 0;
         try {
-            System.out.println("Working");
+            num = Double.valueOf(getString());
+//            System.out.println("num = " + num);
+        } catch (NumberFormatException e) {
+            System.out.println("Try again! That wasn't an Integer");
+            getInt();
         }
-        catch (Exception e) {
-            throw new Exception("Uh oh, something went wrong");
-        }
-        return this.scanner.nextDouble();
+        return num;
     }
 
-    public double getDouble(String prompt) throws Exception {
+    public double getDouble(String prompt) {
         return this.getDouble();
     }
 
