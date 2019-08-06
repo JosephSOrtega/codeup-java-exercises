@@ -1,10 +1,16 @@
 package grades;
 
+//import util.Input;
+import util.Input;
+
 import java.util.HashMap;
 import java.util.Scanner;
 
+
 public class GradesApplication {
-     static HashMap<String, Student> students = new HashMap<>();
+    static HashMap<String, Student> students = new HashMap<>();
+    static Input input = new Input();
+
 
     public static void main(String[] args) {
         students.put("JosephSOrtega", new Student("Joseph"));
@@ -37,41 +43,42 @@ public class GradesApplication {
         System.out.println(students.get("JaneDoe"));
         System.out.println(students.get("DaveDudeman"));
 
-
 //        Ex 3 v Ex 2 ^
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome!\n+" +
-                "Here are the GitHub usernames of our students:\n "
+                        "Here are the GitHub usernames of our students:\n "
 //                        +
 //                "|JosephSOrtega| |JohnDoe| |JaneDoe| |DaveDudeman|"
         );
         displayUsers();
 
-        String cont = "y";
+        boolean cont = true;
         do {
-            System.out.println("\nWhat student would you like to see more information on?");
-            String answer = scanner.nextLine();
+//            System.out.println("\nWhat student would you like to see more information on?");
+            String answer = input.getString("\nWhat student would you like to see more information on?");
 
             if (students.containsKey(answer)) {
-                System.out.println("Name: " + students.get(answer) + " - GitHub Username: " + students.get(answer).getName());
+                System.out.println("Name: " + students.get(answer).getName() + " - GitHub Username: " + answer);
                 System.out.println("Current Average: " + students.get(answer).getGradeAverage() + "\n");
-                System.out.println("Would you like to see another student? [y/n]");
-                cont = scanner.nextLine();
+//                System.out.println("Would you like to see another student? [y/n]");
+                cont = input.yesNo("Would you like to see another student? [y/n]");
             } else {
                 System.out.println("Sorry, no student found with the GitHub username of \"" + answer + "\".");
             }
 
-        } while (cont.equalsIgnoreCase("y"));
+        } while (cont);
         System.out.println("Goodbye, and have a wonderful day!");
 
     }
 
+
     public static void displayUsers() {
-        for (String users : students.keySet()){
-            System.out.print("|"+users+"| ");
+        for (String users : students.keySet()) {
+            System.out.print("|" + users + "| ");
         }
     }
+
 
 //Loop through hashmap to see info:
 //    for (Integer ssn : people.keyset()) {
