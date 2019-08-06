@@ -43,19 +43,23 @@ public class Input {
     }
 
     public int getInt() {
-        return this.scanner.nextInt();
+        int num = 0;
+        try {
+            num = Integer.valueOf(getString());
+//            System.out.println("num = " + num);
+        } catch (NumberFormatException e) {
+        System.out.println("Try again! That wasn't an Integer");
+        getInt();
+        }
+        return num;
     }
 
     //    public int getInt(String prompt) {
 //        System.out.println(prompt);
 //        return this.getInt();
 //    }
-    public int getInt(String prompt) throws Exception {
-        try {
+    public int getInt(String prompt) {
             System.out.println(prompt);
-        } catch (Exception e) {
-            System.out.println("Uh oh, something went wrong: ");
-        }
         return this.getInt();
     }
 
@@ -70,16 +74,17 @@ public class Input {
 
     }
 
-    public double getDouble() {
+    public double getDouble()throws Exception {
+        try {
+            System.out.println("Working");
+        }
+        catch (Exception e) {
+            throw new Exception("Uh oh, something went wrong");
+        }
         return this.scanner.nextDouble();
     }
 
     public double getDouble(String prompt) throws Exception {
-        try {
-            System.out.println(prompt);
-        } catch (Exception e) {
-            System.out.println("Uh oh, something went wrong: ");
-        }
         return this.getDouble();
     }
 
