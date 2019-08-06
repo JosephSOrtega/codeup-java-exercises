@@ -4,8 +4,9 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class GradesApplication {
+     static HashMap<String, Student> students = new HashMap<>();
+
     public static void main(String[] args) {
-        HashMap<String, Student> students = new HashMap<>();
         students.put("JosephSOrtega", new Student("Joseph"));
         students.get("JosephSOrtega").addGrade(5);
         students.get("JosephSOrtega").addGrade(5);
@@ -41,12 +42,15 @@ public class GradesApplication {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome!\n+" +
-                "Here are the GitHub usernames of our students:\n " +
-                "|JosephSOrtega| |JohnDoe| |JaneDoe| |DaveDudeman|");
+                "Here are the GitHub usernames of our students:\n "
+//                        +
+//                "|JosephSOrtega| |JohnDoe| |JaneDoe| |DaveDudeman|"
+        );
+        displayUsers();
 
         String cont = "y";
         do {
-            System.out.println("What student would you like to see more information on?");
+            System.out.println("\nWhat student would you like to see more information on?");
             String answer = scanner.nextLine();
 
             if (students.containsKey(answer)) {
@@ -61,6 +65,12 @@ public class GradesApplication {
         } while (cont.equalsIgnoreCase("y"));
         System.out.println("Goodbye, and have a wonderful day!");
 
+    }
+
+    public static void displayUsers() {
+        for (String users : students.keySet()){
+            System.out.print("|"+users+"| ");
+        }
     }
 
 //Loop through hashmap to see info:
