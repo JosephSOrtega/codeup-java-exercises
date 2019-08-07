@@ -75,13 +75,13 @@ public class Input {
     }
 
     public double getDouble() {
-        double num = 0;
+        double num = 0.0;
         try {
             num = Double.valueOf(getString());
 //            System.out.println("num = " + num);
         } catch (NumberFormatException e) {
             System.out.println("Try again! That wasn't an Integer");
-            getInt();
+            getDouble();
         }
         return num;
     }
